@@ -2,6 +2,8 @@ import subprocess
 import shlex
 import time
 
+xec_path = "/Volumes/GoogleDrive/My Drive/Drive Code/mwjg/bin/Mac OS X/mrswatson"
+
 crypath = "/Volumes/GoogleDrive/My Drive/Ableton/Cry.wav"
 alivepath = "/Volumes/GoogleDrive/My Drive/Drive Code/MrsWatson/bin/Mac OS X/alive44132.wav"
 
@@ -22,9 +24,9 @@ def processAudio(inpath, outpath, fxlist):
     ipsans = inpath.split(".")[0]
     for i, fx in enumerate(fxlist):
         if i == 0:
-            cmdstr = f"./mrswatson --input {inpath} --output {ipsans}-{i}.wav --plugin " + fx
+            cmdstr = f"{xec_path} --input {inpath} --output {ipsans}-{i}.wav --plugin " + fx
         else:
-            cmdstr = f"./mrswatson --input {ipsans}-{(i-1)}.wav --output {ipsans}-{i}.wav --plugin " + fx
+            cmdstr = f"{xec_path} --input {ipsans}-{(i-1)}.wav --output {ipsans}-{i}.wav --plugin " + fx
         subprocess.run(shlex.split(cmdstr), check=False)
         print("just ran")
         print(cmdstr)
